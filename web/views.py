@@ -14,4 +14,5 @@ def index(request):
     form = UploadFileForm()
     return render(request, 'web/index.html', {'form': form})
 
-    return render(request, 'web/index.html')
+def results(request):
+    return render(request, 'web/results.html')#, {'result': result})
