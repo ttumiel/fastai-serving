@@ -1,0 +1,10 @@
+<h1>Serving Pytorch Models</h1>
+<div>
+    <p>
+        Upload a photo to classify:
+    </p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="file" name="pic" accept="image/*">
+    </form>
+</div>
