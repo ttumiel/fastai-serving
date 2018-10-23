@@ -1,10 +1,11 @@
 <h1>Serving Pytorch Models</h1>
 <div>
     <p>
-        Upload a photo to classify:
+        Welcome to the Pytorch Serving Demo
     </p>
-    <form method="post">
+    <form enctype="multipart/form-data" method="post" action="/">
         {% csrf_token %}
-        <input type="file" name="pic" accept="image/*">
+        {{ form.as_table }}
+        <input type="submit" value="Submit">
     </form>
 </div>
