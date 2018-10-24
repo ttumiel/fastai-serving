@@ -7,9 +7,8 @@ The aim of this project was to develop a minimal Django webapp that will allow y
 Install dependencies using conda environment:
 
 ```sh
-conda create -n "myEnv" python=3.6
+conda create --name "myEnv" python=3.6 --file package-list.txt
 conda activate myEnv
-conda install -- file requirements.txt
 ```
 
 Then run the webapp:
