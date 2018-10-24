@@ -8,11 +8,11 @@ def index(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            evaluate(request.FILES['image'])
-            # print(request.FILES['image'])
-            return HttpResponseRedirect('/results', )
+            pred, prob = evaluate(request.FILES['image'])
+            return render(request, 'web/results.html', {'pred': pred, 'prob': prob})
     form = UploadFileForm()
     return render(request, 'web/index.html', {'form': form})
 
+# Should use separate view
 def results(request):
-    return render(request, 'web/results.html')#, {'result': result})
+    return render(request, 'web/results.html', {'result': result})

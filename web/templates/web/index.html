@@ -4,8 +4,10 @@
         Welcome to the Pytorch Serving Demo
     </p>
     <form enctype="multipart/form-data" method="post" action="/">
-        {% csrf_token %}
-        {{ form.as_table }}
+        <div>
+            {% csrf_token %}
+            {{ form.as_table }}
+        </div>
         <input type="submit" value="Submit">
     </form>
 </div>
