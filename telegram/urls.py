@@ -4,5 +4,5 @@ from . import views
 
 app_name = 'telegram'
 urlpatterns = [
-    path('predict/', views.predict, name='predict'),
+    path('<str:bot_token>/predict/', views.Predict.as_view(), name='predict'),
 ]
