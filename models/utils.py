@@ -1,4 +1,7 @@
 # Utility file that will connect to pytorch to evaluate models
+# package this file with the models folder instead for global 
+# access my multiple apps. Also, this just makes more sense
+
 
 from fastai import *
 from fastai.vision import *
@@ -19,8 +22,6 @@ def evaluate(image):
             destination.write(chunk)
 
     return pytorch('tmp/'+str(imageNum)+str(image))
-
-
 
 def pytorch(imagePath):
     """
