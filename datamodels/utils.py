@@ -9,7 +9,7 @@ import torch.nn.functional as F
 
 imageNum = 0
 
-data = ImageDataBunch.from_folder("models/", ds_tfms=get_transforms(), test='test', tfms=imagenet_norm, size=224)
+data = ImageDataBunch.from_folder("datamodels/", ds_tfms=get_transforms(), test='test', tfms=imagenet_norm, size=224)
 learn = ConvLearner(data, models.resnet34, metrics=accuracy)
 learn.load(f"dog_cat_model_cpu")
 learn.precompute=False
