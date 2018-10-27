@@ -3,8 +3,8 @@ from telegram import ParseMode
 from django.template.loader import render_to_string
 import logging, os
 
-import models
-from config import BASE_FILE_PATH, TG_TOKEN
+import datamodels
+from .config import BASE_FILE_PATH, TG_TOKEN
 
 logging.basicConfig(format='[%(asctime)s][%(name)s][%(levelname)s] %(message)s',
 	level=logging.INFO)

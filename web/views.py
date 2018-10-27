@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from .forms import UploadFileForm
-from .utils import evaluate
+import datamodels
 
 def index(request):
     if request.method == 'POST':
