@@ -1,6 +1,6 @@
-from telegram.ext import MessageHandler, Filters, CommandHandler, Updater
 from telegram.ext.dispatcher import run_async
 from telegram import ParseMode
+from django.template.loader import render_to_string
 import logging, os
 
 from .models.utils import pytorch
@@ -11,12 +11,13 @@ logging.basicConfig(format='[%(asctime)s][%(name)s][%(levelname)s] %(message)s',
 
 logger = logging.getLogger(__name__)
 
-help_message = "" # Read markdown from file!
+def _display_help():
+    return render_to_string('telegram/help.md')
 
 @run_async
-def send_help(bot, update):
+def help_message(bot, update):
 	logger.info("start or help command")
-	bot.send_message(update.message.chat_id, help_message,
+	bot.send_message(update.message.chat_id, _display_help(),
 		parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 @run_async
@@ -51,17 +52,3 @@ class PredictImage():
 	# 		os.remove(self.file_path)
 	# 	except:
     #         pass
-
-updater = Updater(token=os.environ.get('TG_TOKEN') or TG_TOKEN or "")
-dispatcher = updater.dispatcher
-
-def main():
-	imgHandler = MessageHandler(Filters.photo, evaluate_image)
-	cmdHandler = CommandHandler(["start", "help"], send_help)
-	dispatcher.add_handler(imgHandler, cmdHandler)
-
-	updater.start_polling(clean=True)
-	updater.idle()
-
-if __name__ == '__main__':
-    main()
