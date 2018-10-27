@@ -19,10 +19,11 @@ TOKEN = os.environ.get('TG_TOKEN') or TG_TOKEN or ""
 
 bot = Bot(TOKEN)
 new_updates = Queue()
-dispatcher = Dispatcher(bot, new_updates)
+dispatcher = Dispatcher(bot, new_updates)#, None, workers=0)#
 imgHandler = MessageHandler(Filters.photo, evaluate_image)
 cmdHandler = CommandHandler(["start", "help"], help_message)
-dispatcher.add_handler(imgHandler, cmdHandler)
+dispatcher.add_handler(imgHandler)
+dispatcher.add_handler(cmdHandler)
 
 # Start the thread
 thread = Thread(target=dispatcher.start, name='dispatcher')
@@ -30,10 +31,13 @@ thread.start()
 
 class Predict(View):
     def post(self, request, bot_token):
+        global new_updates
+
         if bot_token != TOKEN:
             return HttpResponseForbidden('Invalid token')
+        data = json.loads(request.body.decode('utf-8'))
+        update = Update.de_json(data, bot)
 
-        update = Update.de_json(json.loads(request.body), bot)
         new_updates.put(update)
 
         # try:
@@ -42,3 +46,7 @@ class Predict(View):
         #     return HttpResponseBadRequest('Invalid request body')
 
         return JsonResponse({}, status=200)
+
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super(Predict, self).dispatch(request, *args, **kwargs)
