@@ -43,8 +43,8 @@ class PredictImage():
 
 	def predict(self):
 		self.download()
-		msg = pytorch(self.file_path)
-		self.reply(msg)
+		pred, prob = predict(self.file_path)
+		self.reply("This is a " + pred + ", with " + prob + " confidence")
 		# Remove images after classification??
 
 	# def remove(self):
