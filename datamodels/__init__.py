@@ -1,1 +1,1 @@
-from .utils import pytorch, evaluate
+from .utils import predict, save_image

@@ -14,17 +14,24 @@ learn = ConvLearner(data, models.resnet34, metrics=accuracy)
 learn.load(f"dog_cat_model_cpu")
 learn.precompute=False
 
-def evaluate(image):
+def save_image(image):
+    """
+    Save an uploaded image for processing
+    
+    return image name
+    """
     global imageNum
     imageNum+=1
     with open('tmp/'+str(imageNum)+str(image), 'wb+') as destination:
         for chunk in image.chunks():
             destination.write(chunk)
 
-    return pytorch('tmp/'+str(imageNum)+str(image))
+    return 'tmp/'+str(imageNum)+str(image)
 
-def pytorch(imagePath):
+def predict(imagePath):
     """
+    Evaluate an image using a trained pytorch model
+
     returns (predicted category, probability)
     """
     global learn
