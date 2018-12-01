@@ -96,16 +96,30 @@ Your model should be saved for whatever architecture you intend to do inference 
 ## Read More
 
 For more about the Telegram bot see:
+
 - [Deployment](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots)
 - [Webhooks](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Webhooks)
-- [Python Telgram Bot Docs](https://python-telegram-bot.readthedocs.io/en/stable/)
+- [Python Telegram Bot Docs](https://python-telegram-bot.readthedocs.io/en/stable/)
 
 For more about the Django app see:
+
 - [Django Docs](https://docs.djangoproject.com/en/2.1/)
 - [Saving images](https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/)
 
 For more about Pytorch models see:
+
 - [Saving models](https://pytorch.org/tutorials/beginner/saving_loading_models.html)
 - [Saving and loading Fastai Models](https://docs.fast.ai/basic_train.html#Saving-and-loading-models) - The Fastai library wraps Pytorch and thus any models trained with it can be used there. In fact, the demo [cats vs dogs model](https://github.com/fastai/fastai/blob/master/courses/dl1/lesson1.ipynb) was trained with Fastai.
 - [Pytorch v1 Docs](https://pytorch.org/docs/master/)
 - [Fastai v1 Docs](https://docs.fast.ai)
+
+## Demo
+
+### The barebones webapp interface:
+![Webapp](./img/webapp_1.png)
+
+### Classification response:
+![Webapp Success](./img/webapp_2.png)
+
+### Telegram Bot:
+![Telegram](./img/telegram.png)
