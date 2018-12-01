@@ -45,7 +45,7 @@ class Predict(View):
         # except ValueError:
         #     return HttpResponseBadRequest('Invalid request body')
 
-        return JsonResponse({}, status=200)
+        return JsonResponse({"Status": 1}, status=200)
 
     @method_decorator(csrf_exempt)
     def dispatch(self, request, *args, **kwargs):

@@ -15,10 +15,9 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  # Replace dep1 dep2 ... with your dependencies
   - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION --file package-list.txt
   - source activate test-environment
   - python setup.py install
 
 script:
-  - pytest
+  - python manage.py test
