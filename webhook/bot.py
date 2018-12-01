@@ -3,7 +3,7 @@ from telegram import ParseMode
 from django.template.loader import render_to_string
 import logging, os
 
-import datamodels
+import datamodels as D
 from .config import BASE_FILE_PATH, TG_TOKEN
 
 logging.basicConfig(format='[%(asctime)s][%(name)s][%(levelname)s] %(message)s',
@@ -16,7 +16,7 @@ def _display_help():
 
 @run_async
 def help_message(bot, update):
-	logger.info("start or help command")
+	logger.info(f"Command received: {update.message.text}")
 	bot.send_message(update.message.chat_id, _display_help(),
 		parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
@@ -38,14 +38,14 @@ class PredictImage():
 		new_file.download(self.file_path)
 
 	def reply(self, message):
-		self.message.reply_message(f"Your image contains a {message[0]} with probability {message[1]}",
-		reply_to_message_id=self.message_id) # reply message??
+		self.message.reply_text(message, reply_to_message_id=self.message_id)
 
 	def predict(self):
 		self.download()
-		pred, prob = predict(self.file_path)
-		self.reply("This is a " + pred + ", with " + prob + " confidence")
+		pred, prob = D.predict(self.file_path)
+		self.reply(f"Your image contains a {pred} with probability {str(prob)}")
 		# Remove images after classification??
+		# self.remove()
 
 	# def remove(self):
 	# 	try:
