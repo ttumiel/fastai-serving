@@ -123,3 +123,7 @@ For more about Pytorch models see:
 
 ### Telegram Bot:
 ![Telegram](./img/telegram.png)
+
+## License
+
+This project is licensed under the MIT license. Please see the full license in the `LICENSE` file.
