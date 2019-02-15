@@ -15,7 +15,7 @@ install:
   # Useful for debugging any issues with conda
   - conda info -a
 
-  - conda create -q -c pytorch -c fastai -n test-environment python=$TRAVIS_PYTHON_VERSION --file package-list.txt
+  - conda create -q -n test-environment -c pytorch -c fastai python=$TRAVIS_PYTHON_VERSION --file package-list.txt
   - source activate test-environment
   - python setup.py install
 
