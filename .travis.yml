@@ -1,7 +1,7 @@
 language: python
 python:
-  # We don't actually use the Travis Python, but this keeps it organized.
   - "3.6"
+
 install:
   - sudo apt-get update
   # We do this conditionally because it saves us some downloading if the
@@ -17,7 +17,6 @@ install:
 
   - conda env create -f environment.yml
   - source activate test-environment
-  - python setup.py install
 
 script:
   - python manage.py test

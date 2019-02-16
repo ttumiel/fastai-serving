@@ -5,6 +5,7 @@
 from fastai.vision import create_cnn, ImageDataBunch, open_image, get_transforms, models
 from fastai.metrics import accuracy
 import torch.nn.functional as F
+import torch
 
 imageNum = 0
 
