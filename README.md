@@ -1,5 +1,7 @@
 # Serving Fastai Models
 
+[![Build Status](https://travis-ci.org/Tom2718/fastai-serving.svg?branch=master)](https://travis-ci.org/Tom2718/fastai-serving)
+
 The aim of this project was to develop a minimal Django webapp that will allow you to serve a fastai model. There are currently three ways to submit an image:
 
 - From the "webapp"
@@ -116,12 +118,15 @@ For more about Pytorch models see:
 ## Demo
 
 ### The barebones webapp interface:
+
 ![Webapp](./img/webapp_1.png)
 
 ### Classification response:
+
 ![Webapp Success](./img/webapp_2.png)
 
 ### Telegram Bot:
+
 ![Telegram](./img/telegram.png)
 
 ## License
