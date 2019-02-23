@@ -17,6 +17,7 @@ install:
 
   - conda env create -f environment.yml
   - source activate test-environment
+  - python datamodels/gen_test_model.py
 
 script:
   - python manage.py test
