@@ -149,5 +149,4 @@ pip-selfcheck.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
-
-# End of https://www.gitignore.io/api/venv,python,django,visualstudiocode
+*.pth
