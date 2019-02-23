@@ -15,11 +15,9 @@ from telegram.ext import Dispatcher, MessageHandler, Filters, CommandHandler, Up
 from .config import TG_TOKEN
 from .bot import evaluate_image, help_message
 
-TOKEN = os.environ.get('TG_TOKEN') or TG_TOKEN or ""
-
-bot = Bot(TOKEN)
+bot = Bot(TG_TOKEN)
 new_updates = Queue()
-dispatcher = Dispatcher(bot, new_updates)#, None, workers=0)#
+dispatcher = Dispatcher(bot, new_updates)
 imgHandler = MessageHandler(Filters.photo, evaluate_image)
 cmdHandler = CommandHandler(["start", "help"], help_message)
 dispatcher.add_handler(imgHandler)
@@ -33,7 +31,7 @@ class Predict(View):
     def post(self, request, bot_token):
         global new_updates
 
-        if bot_token != TOKEN:
+        if bot_token != TG_TOKEN:
             return HttpResponseForbidden('Invalid token')
         data = json.loads(request.body.decode('utf-8'))
         update = Update.de_json(data, bot)
